@@ -34,17 +34,37 @@
 \end{itemize}
 
 \begin{tikzpicture}
-    \begin{class}[text width =5cm]{Image}{0 ,0}
-        \attribute{owner : String }
-        \attribute{balance : Dollars = 0}
-        \operation{deposit ( amount : Dollars )}
-        \operation[0]{ withdrawl ( amount : Dollars )}
+    \begin{class}[text width =3cm]{Image}{0 ,0}
+        \attribute{}
+		\operation{+ setImp() }	%公有成员
+		\operation{+ parseFile() }                            %保护成员
+        % \cdots
     \end{class}
-    
-    \begin{class}[text width=7cm]{ImageImp}{-5,-5}
-        \inherit{Image}		%继承,表示此类继承于BankAccount类,自动连线,其它关系的命令如下
-        \attribute{insufficientFundsFee : Dollars }
-        \operation{processCheck ( checkToProcess : Check)}
-        \operation{withdrawal ( amount : Dollars )}
+
+	\begin{class}[text width=3cm]{ImageImp}{7,0}
+        \attribute{}
+		\operation{+ doPaint() }	
+	\end{class}
+
+    \begin{class}[text width=2cm]{BMP}{-2,-3.5}
+        \inherit{Image}
     \end{class}
+
+    \begin{class}[text width=2cm]{GIF}{0.5,-3.5}
+        \inherit{Image}
+    \end{class}
+
+    \begin{class}[text width=2cm]{JPEG}{3,-3.5}
+        \inherit{Image}
+    \end{class}
+
+    \begin{class}[text width=2cm]{WinImp}{6,-3.5}
+        \inherit{ImageImp}
+    \end{class}
+
+    \begin{class}[text width=2cm]{LinuxImp}{8.5,-3.5}
+        \inherit{ImageImp}
+    \end{class}
+
+    \composition{Image}{}{}{ImageImp}
 \end{tikzpicture}
