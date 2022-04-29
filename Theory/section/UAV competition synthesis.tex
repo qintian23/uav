@@ -33,55 +33,18 @@
     \item etc.
 \end{itemize}
 
-\begin{figure}[!ht]
-	\centering
-	\begin{displaymath}
-	\mbox{环境}\left\{
-	\begin{array}{lr}
-	\mbox{基本数据类型} \left\{ \begin{array}{lr}
-	\mbox{整型} \left\{ \begin{array}{lr}
-	\mbox{整型(int)} \\
-	\mbox{短整型(short)} \\
-	\mbox{长整型(long)} 
-	\end{array} \right.\\
-	\mbox{实型} \left\{ \begin{array}{lr}
-	\mbox{单精度(float)} \\
-	\mbox{双精度(double)} \\
-	\mbox{长双精度(long double)} 
-	\end{array} \right.\\
-	\mbox{字符型(char)}
-	\end{array} \right. \\
-	\mbox{复杂数据类型} \left\{ \begin{array}{lr}
-	\mbox{数组} \\
-	\mbox{结构体(int)} \\
-	\mbox{联合体(short)} \\
-	\mbox{位域} \\
-	\mbox{枚举(enum)} 
-	\end{array} \right.\\
-	\mbox{指针类型} \\
-	\mbox{空类型} \\
-	\mbox{定义类型} 
-	\end{array}
-	\right.
-	\label{basicdatatype}
-	\end{displaymath}
-	\caption{C语言数据类型层次结构图}
-	\label{basicdatatype02}
-\end{figure}
-
-
-\begin{tikzpicture}[node distance=10pt]
-    \node[draw, rounded corners]                        (start)   {Start};
-    \node[draw, below=of start]                         (step 1)  {Step 1};
-    \node[draw, below=of step 1]                        (step 2)  {Step 2};
-    \node[draw, diamond, aspect=2, below=of step 2]     (choice)  {Choice};
-    \node[draw, right=30pt of choice]                   (step x)  {Step X};
-    \node[draw, rounded corners, below=20pt of choice]  (end)     {End};
+\begin{tikzpicture}
+    \begin{class}[text width =5cm]{Image}{0 ,0}
+        \attribute{owner : String }
+        \attribute{balance : Dollars = 0}
+        \operation{deposit ( amount : Dollars )}
+        \operation[0]{ withdrawl ( amount : Dollars )}
+    \end{class}
     
-    \draw[->] (start)  -- (step 1);
-    \draw[->] (step 1) -- (step 2);
-    \draw[->] (step 2) -- (choice);
-    \draw[->] (choice) -- node[left]  {Yes} (end);
-    \draw[->] (choice) -- node[above] {No}  (step x);
-    \draw[->] (step x) -- (step x|-step 2) -> (step 2);
+    \begin{class}[text width=7cm]{ImageImp}{-5,-5}
+        \inherit{BankAccount}		%继承,表示此类继承于BankAccount类,自动连线,其它关系的命令如下
+        \attribute{insufficientFundsFee : Dollars }
+        \operation{processCheck ( checkToProcess : Check)}
+        \operation{withdrawal ( amount : Dollars )}
+    \end{class}
 \end{tikzpicture}
